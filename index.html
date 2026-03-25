@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting to Office App...</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // This part detects if the user is on an iPhone or Android
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // --- EDIT THESE TWO LINKS BELOW ---
+            
+            var androidLink = "https://play.google.com/store/apps/details?id=com.merisangini";
+            
+            var iosLink = "https://apps.apple.com/us/app/meri-sangini/id1568067435";
+            
+            // --- END OF EDITING ---
+
+            var fallback = "https://crs.org.np/"; // Where to go if scanned by a PC
+
+            if (/android/i.test(userAgent)) {
+                // If it's an Android phone, go to Play Store
+                window.location.replace(androidLink);
+            } 
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // If it's an iPhone or iPad, go to App Store
+                window.location.replace(iosLink);
+            } 
+            else {
+                // If it's a computer or unknown, go to the fallback link
+                window.location.replace(fallback);
+            }
+        };
+    </script>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>Redirecting to the App Store...</h2>
+    <p>If you are not redirected automatically, please wait a moment.</p>
+</body>
+</html>
